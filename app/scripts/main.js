@@ -18,6 +18,6 @@ require.config({
 
 require([
     'handlebars'
-], function (a) {
+], function () {
     console.log('i am a test', Handlebars);
 });
