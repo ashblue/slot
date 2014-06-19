@@ -337,6 +337,35 @@ module.exports = function (grunt) {
             }
         },
 
+        preprocess : {
+            options: {
+                inline: true,
+                context : {
+                    DEBUG: false
+                }
+            },
+            html : {
+                src : [
+                    '<%= config.dist %>/index.html'
+                ]
+            }
+        },
+
+        requirejs: {
+            dist: {
+                options: {
+                    baseUrl: '<%= config.app %>/scripts/',
+                    mainConfigFile: '<%= config.app %>/scripts/main.js',
+                    include: 'main',
+                    name: '../../bower_components/almond/almond',
+                    out: '.tmp/concat/scripts/main.js',
+                    useStrict: true,
+                    preserveLicenseComments: false,
+                    optimize: 'none'
+                }
+            }
+        },
+
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
         modernizr: {
@@ -413,9 +442,11 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
+        'requirejs:dist',
         'cssmin',
         'uglify',
         'copy:dist',
+        'preprocess:html',  // Remove DEBUG code from production builds
         'modernizr',
         'rev',
         'usemin',
