@@ -8,6 +8,10 @@ $background: #333;
   position: relative;
   cursor: pointer;
 
+  &.slot-invalid {
+    outline: 1px solid #f00;
+  }
+
   &:hover {
     background: #000;
 
@@ -41,7 +45,6 @@ $background: #333;
   }
 
   .slot-image {
-//    width: 100%;
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;

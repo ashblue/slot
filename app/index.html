@@ -40,14 +40,14 @@
             <div>
                 <h2>Slot usage</h2>
 <pre>
-new sl.Class('/data/inventory.json');
+new sl.Class('/data/inventory.json'); // (data repository)
 </pre>
                 <div id="slot"></div>
 
                 <div>
                     <h3>Pre-Populated</h3>
 <pre>
-new sl.Class('/data/inventory.json', 'my_id_val');
+new sl.Class('/data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (data repository, current ID, targetID)
 </pre>
                     <h5>Horizontal Overflow</h5>
                     <div id="slot-pop"></div>
@@ -61,10 +61,26 @@ new sl.Class('/data/inventory.json', 'my_id_val');
 
                 <div>
                     <h3>Set Image Retrieval Repository</h3>
+                    <p>All images are pulled from a library of ID references at the moment. You can change
+                        some of the parameters with the following options or changing
+                        <code>app/scripts/models/settings.js</code> and then running <code>grunt build</code> on a terminal.</p>
+<pre>
+imageUrl: 'data/images.json', // Optional secondary URL to retrieve images, if you don't set it image will be pulled from current data
+imageKey: 'image', // Key assumed to contain an image url on retrieved data
+imageSrcKey: 'src', // Image source key on the retrieved image URL
+</pre>
                 </div>
 
                 <div>
                     <h3>Set input data</h3>
+                    <p>Supports the following HTML attributes. Will also trigger a red outline when HTML5 invalid fires.</p>
+<pre>
+new sl.Class('/data/inventory.json', 'epic_sword', {
+    name: 'slot-input',
+    required: true
+});
+</pre>
+                    <div id="slot-input"></div>
                 </div>
 
                 <div>

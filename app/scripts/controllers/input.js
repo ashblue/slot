@@ -17,6 +17,14 @@ $(document).ready(function () {
             } else {
                 sl.modal.show(this.url, this.set.bind(this));
             }
+        },
+
+        invalidInput: function (e) {
+            this.$view.addClass('slot-invalid');
+        },
+
+        validInput: function (e) {
+            this.$view.removeClass('slot-invalid');
         }
     };
 
@@ -42,8 +50,12 @@ $(document).ready(function () {
     };
 
     Input.prototype._bind = function () {
-//        this.$view.find('.slot-clear').click(this.clear);
+        var self = this;
         this.$view.click(_event.clickSlot.bind(this));
+        this.$view.find('input').change(function (e) {
+            if ($(e.currentTarget).is(':invalid')) _event.invalidInput.apply(self, [e]);
+            else if ($(e.currentTarget).is(':valid')) _event.validInput.apply(self, [e]);
+        });
     };
 
     Input.prototype.clear = function () {
@@ -62,6 +74,8 @@ $(document).ready(function () {
             var data = sl.dataCollection.get(this.url).get(val);
             this.$view.find('.slot-input').val(val);
             this.$view.find('.slot-text').html(data.name);
+            this.triggerChange();
+
             var imageSrc = this.getImageSrc(val);
             if (imageSrc) {
                 this.$view.find('.slot-image').css({ background: 'url(' + imageSrc + ')' }).removeClass('hide').show();
@@ -72,6 +86,12 @@ $(document).ready(function () {
 
         // Set the current value on the text input
         // Or generate the necessary image inputs
+    };
+
+    Input.prototype.triggerChange = function () {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("change", false, true);
+        this.$view.find('input').get(0).dispatchEvent(evt);
     };
 
     Input.prototype.add = function (id) {
@@ -96,6 +116,7 @@ $(document).ready(function () {
         this.$view.find('.slot-image-placeholder').show();
         this.$view.find('.slot-text').html('');
         this.$view.find('.slot-input').val('');
+        this.triggerChange();
     };
 
     // Wipe all available states
