@@ -108,3 +108,21 @@ $background: #333;
     text-indent: 5px;
   }
 }
+
+#slot-modal-content {
+  .slot-modal-thumb {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-size: cover !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ccc;
+  }
+
+  .list-group-item {
+    padding-left: 50px;
+    cursor: pointer;
+  }
+}

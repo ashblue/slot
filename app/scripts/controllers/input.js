@@ -15,7 +15,7 @@ $(document).ready(function () {
             if ($slot.hasClass(STATES.ready)) {
                 this.clear();
             } else {
-                sl.modal.show(this.url, this.set);
+                sl.modal.show(this.url, this.set.bind(this));
             }
         }
     };
@@ -64,9 +64,10 @@ $(document).ready(function () {
             this.$view.find('.slot-text').html(data.name);
             var imageSrc = this.getImageSrc(val);
             if (imageSrc) {
-                this.$view.find('.slot-image').css({ background: 'url(' + imageSrc + ')' }).removeClass('hide');
+                this.$view.find('.slot-image').css({ background: 'url(' + imageSrc + ')' }).removeClass('hide').show();
                 this.$view.find('.slot-image-placeholder').hide();
             }
+            this.setState('ready');
         }
 
         // Set the current value on the text input

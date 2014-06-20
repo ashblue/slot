@@ -17,7 +17,6 @@ $(document).ready(function () {
                 // If there is an image populate it
                 if (val) {
                     self.input.set(val);
-                    self.input.setState('ready');
                 } else {
                     self.input.clearState();
                 }
