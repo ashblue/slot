@@ -2,7 +2,6 @@
 $(document).ready(function () {
     window.sl = window.sl || {};
 
-    // @TODO We need two kind of settings, these global settings and class based settings
     sl.settings = {
         type: 'slot', // slot for text value, strip for arrays
         imageUrl: 'data/images.json', // Optional secondary URL to retrieve images, if you don't set it image will be pulled from current data

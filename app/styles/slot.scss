@@ -41,7 +41,11 @@ $background: #333;
   }
 
   .slot-image {
+//    width: 100%;
     width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover !important; // Force override Twitter Bootstrap bullshit
   }
 
   .slot-text {
@@ -79,6 +83,7 @@ $background: #333;
       width: 100%;
       height: 100%;
       background: #888;
+      overflow: hidden;
     }
 
     .slot-image-placeholder {

@@ -10,4 +10,7 @@ $(document).ready(function () {
     var prePopulateNoImage = new sl.Class('/data/inventory.json', 'epic_no_image', {
         target: '#slot-pop-no-image'
     })
+    var prePopulateVertical = new sl.Class('/data/inventory.json', 'epic_sword_vertical', {
+        target: '#slot-pop-vert-overflow'
+    })
 });

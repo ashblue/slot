@@ -64,7 +64,7 @@ $(document).ready(function () {
             this.$view.find('.slot-text').html(data.name);
             var imageSrc = this.getImageSrc(val);
             if (imageSrc) {
-                this.$view.find('.slot-image').attr('src', imageSrc).removeClass('hide');
+                this.$view.find('.slot-image').css({ background: 'url(' + imageSrc + ')' }).removeClass('hide');
                 this.$view.find('.slot-image-placeholder').hide();
             }
         }

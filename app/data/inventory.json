@@ -6,6 +6,12 @@
     },
 
     {
+        "_id": "epic_sword_vertical",
+        "name": "Epic Sword Vertical",
+        "image": "epicSwordVertical"
+    },
+
+    {
         "_id": "epic_shield",
         "name": "Epic Shield",
         "image": "epicShield"
