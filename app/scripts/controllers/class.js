@@ -1,22 +1,27 @@
 'use strict';
-define([
-    'models/settings'
-], function (settings) {
-    'use strict';
+$(document).ready(function () {
+    window.sl = window.sl || {};
 
-    var Class = function (val, url, options) {
-        $.extend(this, options);
-        if (options) object.merge(this, settings);
+    var Class = function (url, val, options) {
+        if (!url) return console.error('Cannot generate a new slot without a url');
+        this.settings = $.extend(this, options, sl.settings);
+        this.input = new sl.Input(this.settings.type, url, this.settings);
+        this.input.set(val);
 
-        // Discover input type from the options
-        // Generate an input class
+        var self = this;
+        var input = this.input;
+        sl.dataCollection.add(url, function () {
+            // @TODO Fire another callback to gather all image data
+            self.input.clearState();
+            // If a value is present attempt to assign an image
+        });
 
         return this;
     };
 
     Class.prototype.get = function () {
-
+        // Returns a string or array depending on slot or string status
     };
 
-    return Class;
+    sl.Class = Class;
 });

@@ -1,0 +1,13 @@
+[
+    {
+        "_id": "epic_sword",
+        "name": "Epic Sword",
+        "image": "epicSword"
+    },
+
+    {
+        "_id": "epic_shield",
+        "name": "Epic Shield",
+        "image": "epicShield"
+    }
+]

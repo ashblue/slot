@@ -1,39 +1,33 @@
 'use strict';
-define([
-    'models/settings'
-], function (settings) {
-    'use strict';
+$(document).ready(function () {
+    window.sl = window.sl || {};
 
+    // Pockets of data retrieved from the server
     var Data = function (url, callback) {
-        // Generate and attach the view
-        // Set proper data bindings
+        this.url = url;
+        this.list = []; // Loopable retrieved data
+        this.results = {}; // ID set of results
+        this.$ajax = null;
+        this._ready = false; // Is the data loaded yet?
+        this.populate(callback);
 
         return this;
     };
 
-    Input.prototype.clear = function () {
-        // Completely wipe the input (including image)
+    Data.prototype.populate = function (callback) {
+        var self = this;
+
+        this.$ajax = $.get(this.url, function (results) {
+            self.results = results;
+            callback(results);
+            self._ready = true;
+
+            self.list = results;
+            results.forEach(function (res) {
+                self.results[res._id] = res;
+            });
+        });
     };
 
-    Input.prototype.get = function () {
-        // Get the current value
-    };
-
-    Input.prototype.set = function (id) {
-        // Set the current value on the text input
-    };
-
-    Input.prototype.add = function (id) {
-        // Add a new item to the array (input only)
-    };
-
-    Input.prototype.remove = function (id) {
-        // Remove an item from the array
-    };
-
-    Input.prototype.setImage = function (id, src) {
-        // Populate the image tag for an id
-    };
-
-    return Input;
+    sl.Data = Data;
 });

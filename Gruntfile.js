@@ -348,6 +348,9 @@ module.exports = function (grunt) {
                 src : [
                     '<%= config.dist %>/index.html'
                 ]
+            },
+            js: {
+                src: '<%= config.dist %>/javascripts/app/main.js'
             }
         },
 
@@ -442,7 +445,8 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
-        'requirejs:dist',
+//        'requirejs:dist',
+        'preprocess:js',  // Remove DEBUG code from production builds
         'cssmin',
         'uglify',
         'copy:dist',

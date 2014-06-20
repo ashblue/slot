@@ -1,23 +1,7 @@
 'use strict';
+$(document).ready(function () {
+    window.sl = sl || {};
+    window.sl.view = window.sl.view || {};
 
-/**
- * @NOTE Assume jQuery and Bootstrap are already available
- */
-require.config({
-    baseUrl: 'scripts',
-    shim: {
-        handlebars: {
-            exports: 'handlebars'
-        }
-    },
-
-    paths: {
-        handlebars: '../../bower_components/handlebars/handlebars'
-    }
-});
-
-require([
-    'handlebars'
-], function () {
-    console.log('i am a test', Handlebars);
+    new sl.Class('/data/inventory.json');
 });
