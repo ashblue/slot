@@ -10,7 +10,11 @@ $(document).ready(function () {
         add: function (urlLink, callback) {
             var url = this.get(urlLink);
 
-            if (url) return url.$ajax.done(callback);
+            // Use done to stack a new AJAX call (will fire immediately or when done)
+            if (url) return url.$ajax.done(function () {
+                callback(url);
+            });
+
             url = new sl.Data(urlLink, callback);
             this.data[urlLink] = url;
             this.list.push(url);

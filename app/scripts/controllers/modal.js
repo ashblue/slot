@@ -2,15 +2,16 @@
 $(document).ready(function () {
     window.sl = window.sl || {};
 
-    var modal = {
+    window.sl.modal = {
         $modal: null,
-        show: function (url, callback) {
-            var url = sl.dataCollection.get(url);
+        show: function (dataUrl, callback) {
+            var url = sl.dataCollection.get(dataUrl);
 
             if (this.$modal) this.$modal.detach();
             this.$modal = $(sl.view.modal())
                 .appendTo('body');
 
+            this.$modal.modal('show');
             // Filter binding
         },
 

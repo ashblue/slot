@@ -4,16 +4,27 @@ $(document).ready(function () {
 
     var Class = function (url, val, options) {
         if (!url) return console.error('Cannot generate a new slot without a url');
-        this.settings = $.extend(this, options, sl.settings);
+        this.settings = $.extend(this, sl.settings, options);
         this.input = new sl.Input(this.settings.type, url, this.settings);
         this.input.set(val);
 
         var self = this;
         var input = this.input;
-        sl.dataCollection.add(url, function () {
-            // @TODO Fire another callback to gather all image data
-            self.input.clearState();
-            // If a value is present attempt to assign an image
+
+        sl.dataCollection.add(url, function (urlData) {
+            var data = urlData.get(val);
+
+            sl.dataCollection.add(self.imageUrl, function (imageData) {
+                // If there is an image populate it
+                if (val) {
+                    var imageId = data[self.imageKey];
+                    if (imageId) self.input.setImage(imageData.get(imageId)[self.imageSrcKey]);
+                    self.input.setState('ready');
+                } else {
+                    self.input.clearState();
+                }
+
+            });
         });
 
         return this;

@@ -37,17 +37,47 @@
             </ul>
 
 
-            <h2>Slot usage</h2>
+            <div>
+                <h2>Slot usage</h2>
+<pre>
+new sl.Class('/data/inventory.json');
+</pre>
+                <div id="slot"></div>
+
+                <div>
+                    <h3>Pre-Populated</h3>
 <pre>
 new sl.Class('/data/inventory.json', 'my_id_val');
 </pre>
-            <div id="slot"></div>
+                    <div id="slot-pop"></div>
+                </div>
 
-            <h3>Compact version</h3>
+                <div>
+                    <h3>Set Image Retrieval Repository</h3>
+                </div>
+
+                <div>
+                    <h3>Set input data</h3>
+                </div>
+
+                <div>
+                    <h3>Create with pure HTML/CSS</h3>
+                </div>
+
+                <div>
+                    <h3>Filter by previous input</h3>
+                </div>
+
+                <div>
+                    <h3>Compact version</h3>
 <pre>
 new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
 </pre>
-            <div id="slot-compact"></div>
+                    <div id="slot-compact"></div>
+                </div>
+
+            </div>
+
 
             <h2>Strip usage (multiple slots / arrays)</h2>
         </div>
@@ -94,6 +124,7 @@ new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
         <script src="scripts/models/data.js"></script>
         <script src="scripts/models/data-collection.js"></script>
 
+        <script src="scripts/controllers/modal.js"></script>
         <script src="scripts/controllers/input.js"></script>
         <script src="scripts/controllers/class.js"></script>
         <script src="scripts/main.js"></script>

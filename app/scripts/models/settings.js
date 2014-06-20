@@ -4,10 +4,9 @@ $(document).ready(function () {
 
     sl.settings = {
         type: 'slot', // slot for text value, strip for arrays
-        pageCount: 10, // Results per page
-        imageKey: 'image', // Key assumed to contain an image url on retrieved data
         imageUrl: 'data/images.json', // Optional secondary URL to retrieve images, if you don't set it image will be pulled from current data
-        imageUrlKey: 'src', // Image source key on the retrieved image URL
+        imageKey: 'image', // Key assumed to contain an image url on retrieved data
+        imageSrcKey: 'src', // Image source key on the retrieved image URL
         name: '', // HTML name attribute
         nameKey: 'name', // Key used for display name
         parentSlot: null, // Assign a parent Slot instance to limit the number of displayed results to the parentKey (assumes results in key are IDs)

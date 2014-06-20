@@ -19,14 +19,19 @@ $(document).ready(function () {
 
         this.$ajax = $.get(this.url, function (results) {
             self.results = results;
-            callback(results);
-            self._ready = true;
-
             self.list = results;
             results.forEach(function (res) {
                 self.results[res._id] = res;
             });
+
+            callback(self);
+
+            self._ready = true;
         });
+    };
+
+    Data.prototype.get = function (id) {
+        return this.results[id];
     };
 
     sl.Data = Data;

@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     Input.prototype.clear = function () {
         // Completely wipe the input (including image)
-        if (type === 'slot') {
+        if (this.type === 'slot') {
             this.$view.find('.slot-input').val('');
         }
     };
@@ -60,6 +60,7 @@ $(document).ready(function () {
         if (this.type === 'slot') {
             this.$view.find('.slot-input').val(val);
         }
+
         // Set the current value on the text input
         // Or generate the necessary image inputs
     };
@@ -72,8 +73,12 @@ $(document).ready(function () {
         // Remove an item from the array
     };
 
-    Input.prototype.setImage = function (id, src) {
+    Input.prototype.setImage = function (src) {
         // Populate the image tag for an id
+        if (this.type === 'slot') {
+            if (src) this.$view.find('.slot-add').hide();
+            this.$view.find('.slot-image').attr('src', src).removeClass('hide');
+        }
     };
 
     Input.prototype.clearState = function () {
@@ -85,8 +90,9 @@ $(document).ready(function () {
         this.$view.removeClass(states);
     };
 
-    Input.prototype.setState = function () {
-
+    Input.prototype.setState = function (state) {
+        this.clearState();
+        this.$view.addClass(STATES[state]);
     };
 
     sl.Input = Input;
