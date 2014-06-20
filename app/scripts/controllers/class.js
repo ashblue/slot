@@ -6,7 +6,6 @@ $(document).ready(function () {
         if (!url) return console.error('Cannot generate a new slot without a url');
         this.settings = $.extend(this, sl.settings, options);
         this.input = new sl.Input(this.settings.type, url, this.settings);
-        this.input.set(val);
 
         var self = this;
         var input = this.input;
@@ -17,13 +16,11 @@ $(document).ready(function () {
             sl.dataCollection.add(self.imageUrl, function (imageData) {
                 // If there is an image populate it
                 if (val) {
-                    var imageId = data[self.imageKey];
-                    if (imageId) self.input.setImage(imageData.get(imageId)[self.imageSrcKey]);
+                    self.input.set(val);
                     self.input.setState('ready');
                 } else {
                     self.input.clearState();
                 }
-
             });
         });
 

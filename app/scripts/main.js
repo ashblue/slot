@@ -7,4 +7,7 @@ $(document).ready(function () {
     var prePopulate = new sl.Class('/data/inventory.json', 'epic_sword', {
         target: '#slot-pop'
     });
+    var prePopulateNoImage = new sl.Class('/data/inventory.json', 'epic_no_image', {
+        target: '#slot-pop-no-image'
+    })
 });

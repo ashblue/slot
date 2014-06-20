@@ -18,7 +18,9 @@ $(document).ready(function () {
         var self = this;
 
         this.$ajax = $.get(this.url, function (results) {
-            self.results = results;
+            results.forEach(function (result) {
+                self.results[result._id] = result;
+            });
             self.list = results;
             results.forEach(function (res) {
                 self.results[res._id] = res;

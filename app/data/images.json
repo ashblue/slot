@@ -1,11 +1,11 @@
 [
     {
         "_id": "epicSword",
-        "src": "//placehold.it/10"
+        "src": "http://lorempixel.com/400/200/"
     },
 
     {
-        "_id": "epicSword",
-        "src": "//placehold.it/200"
+        "_id": "epicShield",
+        "src": "//placehold.it/10"
     }
 ]

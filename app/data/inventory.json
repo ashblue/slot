@@ -9,5 +9,10 @@
         "_id": "epic_shield",
         "name": "Epic Shield",
         "image": "epicShield"
+    },
+
+    {
+        "_id": "epic_no_image",
+        "name": "No Image"
     }
 ]

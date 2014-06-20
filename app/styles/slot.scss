@@ -22,10 +22,6 @@ $background: #333;
 
   // When the slot has data present
   &.slot-ready {
-    .slot-add {
-      display: none;
-    }
-
     &:hover {
       .slot-remove {
         display: block;
@@ -103,5 +99,7 @@ $background: #333;
     font-size: 40px;
     border-radius: $border-radius;
     position: absolute;
+    line-height: 50px;
+    text-indent: 5px;
   }
 }
