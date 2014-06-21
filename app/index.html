@@ -65,9 +65,9 @@ new sl.Class('/data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (
                         some of the parameters with the following options or changing
                         <code>app/scripts/models/settings.js</code> and then running <code>grunt build</code> on a terminal.</p>
 <pre>
-imageUrl: 'data/images.json', // Optional secondary URL to retrieve images, if you don't set it image will be pulled from current data
-imageKey: 'image', // Key assumed to contain an image url on retrieved data
-imageSrcKey: 'src', // Image source key on the retrieved image URL
+imageUrl: 'data/images.json',
+imageKey: 'image',
+imageSrcKey: 'src',
 </pre>
                 </div>
 
@@ -109,6 +109,44 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
 
                 <div>
                     <h3>Filter by previous input</h3>
+                    <p>You can filter the given results for a particular input by providing the
+                    following options. The passed filter ID or input retrieves an array of values from
+                    the key. All results in the modal are then limited by the array of IDs.</p>
+
+<pre>
+// @NOTE Provided settings.filter object may only be a slots, no strips (although) strips can be filtered
+filter: '#target_input' || 'data_id' || inputElement, // Note only support jQuery IDs
+filterUrl: '/data/inventory.json',
+filterKey: 'url'
+</pre>
+                    <h4>Filter by data ID only</h4>
+                    <input
+                            type="text"
+                            required="true"
+                            class="slot-input"
+                            data-url="/data/upgrades.json"
+                            data-options='{ "filter": "epic_no_image", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />
+
+                    <h4>Filter by pre-existing input</h4>
+                    <!--<h5>Filter</h5>-->
+                    <!--<input-->
+                            <!--id="slot-filter"-->
+                            <!--type="text"-->
+                            <!--required="true"-->
+                            <!--class="slot-input"-->
+                            <!--data-url="/data/inventory.json" />-->
+
+                    <!--<h5>Results</h5>-->
+                    <!--<input-->
+                            <!--type="text"-->
+                            <!--required="true"-->
+                            <!--class="slot-input"-->
+                            <!--data-url="/data/upgrades.json"-->
+                            <!--data-options='{ "filter": "epic_sword", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />-->
+
+
+                    <h4>Filter by Slot class</h4>
+                    <div id="slot-filter-demo"></div>
                 </div>
 
                 <div>

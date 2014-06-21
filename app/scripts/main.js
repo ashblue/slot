@@ -10,6 +10,7 @@ $(document).ready(function () {
         var $target = $('<div></div>');
         var url = $input.data('url');
         var value = $input.val();
+
         var options = $.extend($input.data('options'), {
             target: $target.get(0),
             input: $input.get(0)
@@ -17,8 +18,6 @@ $(document).ready(function () {
 
         $input.hide();
         $target.insertAfter($input);
-
-        console.log(value);
 
         new sl.Class(url, value, options);
     });

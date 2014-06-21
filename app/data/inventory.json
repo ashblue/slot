@@ -2,23 +2,36 @@
     {
         "_id": "epic_sword",
         "name": "Epic Sword",
-        "image": "epicSword"
+        "image": "epicSword",
+        "upgrades": [
+            "serrated_blade",
+            "divine",
+            "blazing_edge"
+        ]
     },
 
     {
         "_id": "epic_sword_vertical",
         "name": "Epic Sword Vertical",
-        "image": "epicSwordVertical"
+        "image": "epicSwordVertical",
+        "upgrades": []
     },
 
     {
         "_id": "epic_shield",
         "name": "Epic Shield",
-        "image": "epicShield"
+        "image": "epicShield",
+        "upgrades": [
+            "serrated_blade"
+        ]
     },
 
     {
         "_id": "epic_no_image",
-        "name": "No Image"
+        "name": "No Image",
+        "upgrades": [
+            "divine",
+            "blazing_edge"
+        ]
     }
 ]

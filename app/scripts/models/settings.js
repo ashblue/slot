@@ -9,6 +9,10 @@ $(document).ready(function () {
         target: '#slot', // Append item to this ID
         input: null, // Force replace the generated input with an already existing one
 
+        filter: null, // Database ID reference or a Slot object
+        filterUrl: null, // URL for the filtered data (not necessary if .filter = Slot)
+        filterKey: null, // Key to use on filtered data to gather items from
+
         // @TODO Needs rigging
         // Set image retrieval repository and sources
         imageUrl: 'data/images.json', // Optional secondary URL to retrieve images, if you don't set it image will be pulled from current data

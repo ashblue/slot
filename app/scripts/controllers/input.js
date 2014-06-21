@@ -15,7 +15,7 @@ $(document).ready(function () {
             if ($slot.hasClass(STATES.ready)) {
                 this.clear();
             } else {
-                sl.modal.show(this.url, this.set.bind(this));
+                sl.modal.show(this.url, this.set.bind(this), this.settings);
             }
         },
 

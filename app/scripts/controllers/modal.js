@@ -30,10 +30,11 @@ $(document).ready(function () {
         callback: null, // Curently active callback
         dataUrl: null,
 
-        show: function (dataUrl, callback) {
-            var data = sl.dataCollection.get(dataUrl);
+        show: function (dataUrl, callback, options) {
+            this.settings = options || {}; // Prevents us from having to manually clear the options
             this.dataUrl = dataUrl;
             this.callback = callback;
+            var data = this.get();
 
             if (this.$modal) this.$modal.detach();
             this.$modal = $(sl.view.modal())
@@ -43,7 +44,25 @@ $(document).ready(function () {
 
             this.$modal.modal('show');
 
-            this.set(data.list);
+            this.set(data);
+        },
+
+        // @TODO If the filter is an ID or Slot class we must dynamically retrieve the current value
+        get: function () {
+            var data = sl.dataCollection.get(this.dataUrl);
+
+            if (this.settings.filter) {
+                var filter = sl.dataCollection.get(this.settings.filterUrl);
+                console.log(filter.get(this.settings.filter), this.settings.filterKey);
+                var filterData = filter.get(this.settings.filter)[this.settings.filterKey];
+
+                return filterData.map(function (id) {
+                    return data.get(id);
+                });
+
+            } else {
+                return data.list;
+            }
         },
 
         set: function (data) {
