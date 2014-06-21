@@ -38,10 +38,7 @@ $(document).ready(function () {
     };
 
     Class.prototype.get = function () {
-        // Returns a string or array depending on slot or string status
-        if (this.type === 'slot') {
-
-        }
+        return this.input.get();
     };
 
     // Setup filter and make sure everything is ready

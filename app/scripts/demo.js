@@ -17,4 +17,15 @@ $(document).ready(function () {
         name: 'slot-input',
         required: true
     });
+
+    var slotFilterInputParent = new sl.Class('/data/inventory.json', null, {
+        required: true,
+        target: '#slot-filter-demo-parent'
+    });
+    var slotFilterInput = new sl.Class('/data/upgrades.json', null, {
+        "required": true,
+        "filter": slotFilterInputParent,
+        "filterKey": "upgrades",
+        "target": "#slot-filter-demo"
+    });
 });

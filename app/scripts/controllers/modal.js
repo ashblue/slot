@@ -53,9 +53,10 @@ $(document).ready(function () {
 
             if (this.settings.filter) {
                 var filter = sl.dataCollection.get(this.settings.filterUrl);
-                console.log(filter.get(this.settings.filter), this.settings.filterKey);
-                var filterData = filter.get(this.settings.filter)[this.settings.filterKey];
+                var filterId = sl.filter.getFilterId(this.settings.filter);
+                if (filterId === '') return []; // Failsafe in-case parent is empty
 
+                var filterData = filter.get(filterId)[this.settings.filterKey];
                 return filterData.map(function (id) {
                     return data.get(id);
                 });
@@ -80,10 +81,6 @@ $(document).ready(function () {
                     .click(_event.clickItem.bind(self))
                     .appendTo('#slot-modal-results');
             });
-        },
-
-        filter: function (text) {
-            // create a temp array with matches and send it off to set
         }
     };
 });

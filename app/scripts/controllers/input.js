@@ -54,11 +54,29 @@ $(document).ready(function () {
 
     Input.prototype._bind = function () {
         var self = this;
+        var filter = this.settings.filter;
+
         this.$view.click(_event.clickSlot.bind(this));
         this.$view.find('input').change(function (e) {
             if ($(e.currentTarget).is(':invalid')) _event.invalidInput.apply(self, [e]);
             else if ($(e.currentTarget).is(':valid')) _event.validInput.apply(self, [e]);
         });
+
+        // If a filter is available, attempt to listen to the parent input if it can be done
+        if (filter) {
+            var filterType = sl.filter.getFilterType(filter);
+
+            if (filterType === 'object') {
+                filter.input.$view.find('.slot-input').change(function () {
+                    self.clear();
+                });
+
+            } else if (filterType === 'jquery') {
+                sl.filter.$getInput(filter).change(function () {
+                    self.clear();
+                });
+            }
+        }
     };
 
     Input.prototype.clear = function () {
@@ -69,7 +87,9 @@ $(document).ready(function () {
     };
 
     Input.prototype.get = function () {
-        // Get the current value
+        if (this.type === 'slot') {
+            return this.$view.find('.slot-input').val();
+        }
     };
 
     Input.prototype.set = function (val) {
