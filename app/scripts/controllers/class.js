@@ -2,8 +2,6 @@
 $(document).ready(function () {
     window.sl = window.sl || {};
 
-    // @TODO If the passed value does not exist in the retrieved data, fire a console error
-    // and throw a warning symbol on the input
     var Class = function (url, val, options) {
         var self = this;
         if (!url) return console.error('Cannot generate a new slot without a url');

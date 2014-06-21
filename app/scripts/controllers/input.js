@@ -95,6 +95,11 @@ $(document).ready(function () {
     Input.prototype.set = function (val) {
         if (this.type === 'slot') {
             var data = sl.dataCollection.get(this.url).get(val);
+            if (!data) {
+                console.error('slot value missing, removed', val);
+                return this.clear();
+            }
+
             this.$view.find('.slot-input').val(val);
             this.$view.find('.slot-text').html(data.name);
             this.triggerChange();
