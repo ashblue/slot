@@ -85,6 +85,26 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
 
                 <div>
                     <h3>Create with pure HTML/CSS</h3>
+                    <p>Wraps the any input with <code>class="slot-input"</code> in a div. Optional <code>data-options</code>
+                    param is parsed as options</p>
+<pre>
+&lt;input class="slot-input"
+       type="text"
+       name="myInput"
+       required="true"
+       class="slot-input"
+       value="epic_sword"
+       data-url="/data/inventory.json"
+       data-options="{ size: 'normal' }" /&gt;
+</pre>
+                    <input
+                            type="text"
+                            name="myInput"
+                            required="true"
+                            class="slot-input"
+                            value="epic_sword"
+                            data-url="/data/inventory.json"
+                            data-options="{ size: 'normal' }" />
                 </div>
 
                 <div>
@@ -152,6 +172,10 @@ new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
         <script src="scripts/controllers/input.js"></script>
         <script src="scripts/controllers/class.js"></script>
         <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/demo.js -->
+        <script src="scripts/demo.js"></script>
         <!-- endbuild -->
     </body>
 </html>

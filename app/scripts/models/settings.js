@@ -7,6 +7,7 @@ $(document).ready(function () {
         size: 'normal', // Accepts 'normal' or 'compact' for an input that works better in tight places
         view: 'horizontal', // Display as a horizontal never ending list or
         target: '#slot', // Append item to this ID
+        input: null, // Force replace the generated input with an already existing one
 
         // @TODO Needs rigging
         // Set image retrieval repository and sources
@@ -21,7 +22,5 @@ $(document).ready(function () {
 
         parentSlot: null, // Assign a parent Slot instance to limit the number of displayed results to the parentKey (assumes results in key are IDs)
         parentKey: null // Key to use for limiting displayed results
-
-
     };
 });

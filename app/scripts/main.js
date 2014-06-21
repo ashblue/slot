@@ -3,21 +3,23 @@ $(document).ready(function () {
     window.sl = sl || {};
     window.sl.view = window.sl.view || {};
 
-    var basic = new sl.Class('/data/inventory.json');
+    // Find all slots and post-process them
+    var $slots = $('.slot-input');
+    $slots.each(function () {
+        var $input = $(this);
+        var $target = $('<div></div>');
+        var url = $input.data('url');
+        var value = $input.val();
+        var options = $.extend($input.data('options'), {
+            target: $target.get(0),
+            input: $input.get(0)
+        });
 
-    var prePopulate = new sl.Class('/data/inventory.json', 'epic_sword', {
-        target: '#slot-pop'
-    });
-    var prePopulateNoImage = new sl.Class('/data/inventory.json', 'epic_no_image', {
-        target: '#slot-pop-no-image'
-    });
-    var prePopulateVertical = new sl.Class('/data/inventory.json', 'epic_sword_vertical', {
-        target: '#slot-pop-vert-overflow'
-    });
+        $input.hide();
+        $target.insertAfter($input);
 
-    var slotInput = new sl.Class('/data/inventory.json', 'epic_sword', {
-        target: '#slot-input',
-        name: 'slot-input',
-        required: true
+        console.log(value);
+
+        new sl.Class(url, value, options);
     });
 });

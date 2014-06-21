@@ -42,6 +42,9 @@ $(document).ready(function () {
         this.$view = $(sl.view[type](options));
 
         this.$view.appendTo(options.target);
+        if (this.settings.input) {
+            this.$view.find('.slot-input').replaceWith(this.settings.input);
+        }
 
         // Set proper data bindings
         this._bind();
