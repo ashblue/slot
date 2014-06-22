@@ -47,7 +47,6 @@ $(document).ready(function () {
             this.set(data);
         },
 
-        // @TODO If the filter is an ID or Slot class we must dynamically retrieve the current value
         get: function () {
             var data = sl.dataCollection.get(this.dataUrl);
 
