@@ -1,4 +1,5 @@
 $background: #333;
+$background-secondary: #585858;
 $highlight: #ff5815;
 
 .slot.slot-single {
@@ -306,8 +307,92 @@ $highlight: #ff5815;
     }
   }
 
-  &.slot-normal.slot-vertical {
+  &.slot-vertical {
+    background: $background;
+    border-radius: $border-radius;
+    margin-bottom: 10px;
+    padding: 1px;
 
+    .slot-add {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    
+    .slot-right, .slot-left {
+      display: none;
+    }
+
+    .slot-list {
+      list-style: none;
+      background: $background-secondary;
+      border-radius: $border-radius;
+      margin: 30px 5px 5px 5px;
+      padding: 5px;
+
+      .slot-item {
+        position: relative;
+        border: 1px solid #8B8B8B;
+        background: #7A7A7A;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        padding: 0;
+        background-repeat: no-repeat;
+        background-size: cover !important; // Force override Twitter Bootstrap bullshit
+
+        &:hover {
+          .slot-item-remove {
+            display: block;
+          }
+        }
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .slot-item-name {
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.7);
+          height: 100%;
+          padding: 10px;
+          color: #fff;
+          border-radius: 3px 0 0 3px;
+          display: inline-block;
+        }
+        
+        .slot-item-remove {
+          color: #fff;
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.7);
+          width: 100%;
+          height: 100%;
+          text-indent: 6px;
+          font-size: 30px;
+          line-height: 40px;
+
+        }
+      }
+    }
+
+    .slot-loader {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 2;
+      border-radius: $border-radius;
+      color: #fff;
+      line-height: 80px;
+    }
   }
 
   &.slot-normal {
@@ -321,7 +406,7 @@ $highlight: #ff5815;
     .slot-list {
       width: 100%;
       height: 100%;
-      background: #585858;
+      background: $background-secondary;
       border-radius: 3px;
       display: block;
       margin: 0;
@@ -334,13 +419,13 @@ $highlight: #ff5815;
         width: $width;
         height: 100%;
         display: inline-block;
+        border: 1px solid #8B8B8B;
         background: #7A7A7A;
         border-radius: 3px;
         cursor: pointer;
         overflow: hidden;
         position: relative;
         margin-right: 5px;
-        border: 1px solid #8B8B8B;
         background-repeat: no-repeat;
         background-size: cover !important; // Force override Twitter Bootstrap bullshit
 

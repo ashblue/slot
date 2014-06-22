@@ -36,6 +36,10 @@
                 <li>Handlebars</li>
             </ul>
 
+            <div class="alert alert-info">
+                <p>Note that images on the following examples will change between the modal and input slot. As they
+                are dynamically loaded from an external server.</p>
+            </div>
 
             <div>
                 <h2>Slot usage</h2>
@@ -227,10 +231,17 @@ new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
                             value='[]'
                             data-url="/data/upgrades.json"
                             data-options='{ "size": "compact" }' />
-                </div>
 
-                <div>
-                    <h3>Vertical layout (strips only)</h3>
+                    <h5>Vertical layout (strips only)</h5>
+<pre>
+new sl.Class('/data/inventory.json', 'my_id_val', { size: 'vertical' });
+</pre>
+                    <input
+                            type="text"
+                            class="slot-strip"
+                            value='["epic_sword", "epic_sword_vertical"]'
+                            data-url="/data/inventory.json"
+                            data-options='{ "size": "vertical" }' />
                 </div>
             </div>
 
