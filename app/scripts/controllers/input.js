@@ -43,6 +43,28 @@ $(document).ready(function () {
 
         removeSlotItem: function () {
             $(this).detach();
+        },
+
+        disable: function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        },
+
+        dragStart: function (e) {
+            e.dataTransfer.setData('index', $(this).index());
+        },
+
+        drop: function (e) {
+            var $el = $(this);
+            var i = e.dataTransfer.getData('index');
+            var $origin = $el.parent().children().eq(i);
+
+            // Determine the direction of the appended index so we know what side to place it on
+            if ($el.index() < i) {
+                $el.before($origin);
+            } else {
+                $el.after($origin);
+            }
         }
     };
 
@@ -161,7 +183,11 @@ $(document).ready(function () {
             .appendTo(this.$view.find('.slot-list'))
             .click(_event.removeSlotItem);
 
-        // @TODO Fill in image if available
+        // Special drag data bindings
+        $stripItem.get(0).addEventListener('dragstart', _event.dragStart);
+        $stripItem.get(0).addEventListener('drop', _event.drop);
+        $stripItem.get(0).addEventListener('dragover', _event.disable);
+
         var imageSrc = this.getImageSrc(id);
         if (imageSrc) $stripItem.css({ background: 'url(' + imageSrc + ')' });
     };
