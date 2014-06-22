@@ -1,0 +1,19 @@
+[
+    {
+        "_id": "serrated_blade",
+        "name": "Serrated Blade",
+        "image": "epicSword"
+    },
+
+    {
+        "_id": "divine",
+        "name": "Divine Blessing",
+        "image": "epicSwordVertical"
+    },
+
+    {
+        "_id": "blazing_edge",
+        "name": "Blazing Edge",
+        "image": "epicShield"
+    }
+]
