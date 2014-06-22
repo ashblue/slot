@@ -135,6 +135,10 @@ $(document).ready(function () {
     Input.prototype.get = function () {
         if (this.type === 'slot') {
             return this.$view.find('.slot-input').val();
+        } else if (this.type === 'strip') {
+            return this.$view.find('input').map(function () {
+                return $(this).val();
+            });
         }
     };
 
