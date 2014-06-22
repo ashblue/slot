@@ -116,7 +116,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
        class="slot-input"
        value="epic_sword"
        data-url="/data/inventory.json"
-       data-options="{ size: 'normal' }" /&gt;
+       data-options='{ "size": "normal" }' /&gt;
 </pre>
                     <input
                             type="text"
@@ -125,7 +125,25 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
                             class="slot-input"
                             value="epic_sword"
                             data-url="/data/inventory.json"
-                            data-options="{ size: 'normal' }" />
+                            data-options='{ "size": "normal" }' />
+
+                    <h5>Strip support</h5>
+                    <pre>
+&lt;input class="slot-input"
+       type="text"
+       name="myInput"
+       class="slot-strip"
+       value='["epic_sword", "epic_sword_vertical"]'
+       data-url="/data/inventory.json"
+       data-options='{ "name": "strip" }' /&gt;
+</pre>
+                        <input
+                                type="text"
+                                name="myInput"
+                                class="slot-strip"
+                                value='["epic_sword", "epic_sword_vertical"]'
+                                data-url="/data/inventory.json"
+                                data-options='{ "name": "strip" }' />
                 </div>
 
                 <div>
