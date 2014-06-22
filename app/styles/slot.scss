@@ -1,6 +1,6 @@
 $background: #333;
 
-.slot.slot-single.slot-normal {
+.slot.slot-single {
   $border-radius: 0 10px 10px 0;
   border-radius: $border-radius;
   background: $background;
@@ -44,19 +44,12 @@ $background: #333;
     }
   }
 
+  /* BEGIN re-usable components across different display formats */
   .slot-image {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover !important; // Force override Twitter Bootstrap bullshit
-  }
-
-  .slot-text {
-    position: absolute;
-    height: 100%;
-    line-height: 50px;
-    font-size: 20px;
-    white-space: nowrap;
   }
 
   .slot-loader {
@@ -68,15 +61,22 @@ $background: #333;
     width: 100%;
     height: 100%;
     text-align: center;
-    line-height: 50px;
-    border-radius: 0 10px 10px 0;
     z-index: 1;
+    border-radius: $border-radius;
+  }
+
+  .slot-remove {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    border-radius: $border-radius;
+    position: absolute;
   }
 
   .slot-image-wrapper {
-    width: 50px;
-    height: 50px;
-    padding: 5px;
     background: #ccc;
     display: inline-block;
     margin-right: 10px;
@@ -90,25 +90,75 @@ $background: #333;
     }
 
     .slot-image-placeholder {
-      font-size: 30px;
-      line-height: 36px;
       text-align: center;
       width: 100%;
     }
   }
+  /* END re-usable components */
 
-  .slot-remove {
-    display: none;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    top: 0;
-    left: 0;
-    font-size: 40px;
-    border-radius: $border-radius;
-    position: absolute;
-    line-height: 50px;
-    text-indent: 5px;
+  // Default view
+  &.slot-normal {
+    .slot-text {
+      position: absolute;
+      height: 100%;
+      line-height: 50px;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    .slot-loader {
+      line-height: 50px;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .slot-image-wrapper {
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+
+      .slot-image-placeholder {
+        font-size: 30px;
+        line-height: 36px;
+      }
+    }
+
+    .slot-remove {
+      font-size: 40px;
+      line-height: 50px;
+      text-indent: 5px;
+    }
+  }
+
+  // Mini size view for smaller locations
+  &.slot-compact {
+    .slot-text {
+      position: absolute;
+      height: 100%;
+      line-height: 18px;
+      font-size: 12px;
+      white-space: nowrap;
+      left: 25px;
+      top: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .slot-loader {
+      line-height: 18px;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .slot-remove {
+      font-size: 12px;
+      line-height: 18px;
+      text-indent: 5px;
+    }
+
+    .slot-image-wrapper {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      display: block;
+    }
   }
 }
 

@@ -72,6 +72,21 @@ imageSrcKey: 'src',
                 </div>
 
                 <div>
+                    <h3>Missing data handling</h3>
+                    <p>Kicks in whenever an ID is missing from your data</p>
+<pre>
+new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget' });
+</pre>
+                    <input
+                            type="text"
+                            value="asdf"
+                            required="true"
+                            class="slot-input"
+                            data-url="/data/upgrades.json" />
+
+                </div>
+
+                <div>
                     <h3>Set input data</h3>
                     <p>Supports the following HTML attributes. Will also trigger a red outline when HTML5 invalid fires.</p>
 <pre>
@@ -158,15 +173,22 @@ filterKey: 'url'
 <pre>
 new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
 </pre>
+                    <input
+                            type="text"
+                            required="true"
+                            class="slot-input"
+                            data-url="/data/upgrades.json"
+                            data-options='{ "size": "compact" }' />
+
                     <div id="slot-compact"></div>
                 </div>
 
+                <div>
+                    <h3>Vertical layout (strips only)</h3>
+                </div>
             </div>
 
-
-            <h2>Strip usage (multiple slots / arrays)</h2>
         </div>
-
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
