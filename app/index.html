@@ -40,9 +40,15 @@
             <div>
                 <h2>Slot usage</h2>
 <pre>
-new sl.Class('/data/inventory.json'); // (data repository)
+new sl.Class('/data/hash_of_ids.json');
 </pre>
                 <div id="slot"></div>
+
+                <p>Set an option tag to trigger a slot (turns data input into an array)</p>
+<pre>
+new sl.Class('/data/inventory.json', null, { type: 'strip });
+</pre>
+                <div id="strip"></div>
 
                 <div>
                     <h3>Pre-Populated</h3>
@@ -194,6 +200,7 @@ new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/handlebars/handlebars.js"></script>
+        <script src="../bower_components/prefixfree/prefixfree.min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -217,6 +224,7 @@ new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
         <script src="scripts/views/modal-item.js"></script>
         <script src="scripts/views/slot.js"></script>
         <script src="scripts/views/strip.js"></script>
+        <script src="scripts/views/strip-item.js"></script>
 
         <script src="scripts/models/settings.js"></script>
         <script src="scripts/models/data.js"></script>

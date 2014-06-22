@@ -25,6 +25,24 @@ $(document).ready(function () {
 
         validInput: function (e) {
             this.$view.removeClass('slot-invalid');
+        },
+
+        addSlot: function (e) {
+            sl.modal.show(this.url, this.add.bind(this), this.settings);
+        },
+
+        nextSlot: function (e) {
+            var $item = this.$view.find('.slot-item:first');
+            this.$view.find('.slot-list').append($item);
+        },
+
+        prevSlot: function (e) {
+            var $item = this.$view.find('.slot-item:last');
+            this.$view.find('.slot-list').prepend($item);
+        },
+
+        removeSlotItem: function () {
+            $(this).detach();
         }
     };
 
@@ -56,11 +74,17 @@ $(document).ready(function () {
         var self = this;
         var filter = this.settings.filter;
 
-        this.$view.click(_event.clickSlot.bind(this));
-        this.$view.find('input').change(function (e) {
-            if ($(e.currentTarget).is(':invalid')) _event.invalidInput.apply(self, [e]);
-            else if ($(e.currentTarget).is(':valid')) _event.validInput.apply(self, [e]);
-        });
+        if (this.type === 'slot') {
+            this.$view.click(_event.clickSlot.bind(this));
+            this.$view.find('input').change(function (e) {
+                if ($(e.currentTarget).is(':invalid')) _event.invalidInput.apply(self, [e]);
+                else if ($(e.currentTarget).is(':valid')) _event.validInput.apply(self, [e]);
+            });
+        } else if (this.type === 'strip') {
+            this.$view.find('.slot-add').click(_event.addSlot.bind(this));
+            this.$view.find('.slot-right').click(_event.nextSlot.bind(this));
+            this.$view.find('.slot-left').click(_event.prevSlot.bind(this));
+        }
 
         // If a filter is available, attempt to listen to the parent input if it can be done
         if (filter) {
@@ -122,8 +146,24 @@ $(document).ready(function () {
         this.$view.find('input').get(0).dispatchEvent(evt);
     };
 
+    // For adding items to a strip only
     Input.prototype.add = function (id) {
-        // Add a new item to the array (input only)
+        var data = sl.dataCollection.get(this.url).get(id);
+        if (!data) {
+            return console.error('slot value missing, removed', id);
+        }
+
+        var $stripItem = $(sl.view.stripItem({
+            value: id,
+            name: this.settings.name,
+            text: data.name
+        }))
+            .appendTo(this.$view.find('.slot-list'))
+            .click(_event.removeSlotItem);
+
+        // @TODO Fill in image if available
+        var imageSrc = this.getImageSrc(id);
+        if (imageSrc) $stripItem.css({ background: 'url(' + imageSrc + ')' });
     };
 
     Input.prototype.remove = function (id) {

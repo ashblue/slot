@@ -1,6 +1,7 @@
 'use strict';
 $(document).ready(function () {
     var basic = new sl.Class('/data/inventory.json');
+    var slot = new sl.Class('/data/inventory.json', null, { type: 'strip', target: '#strip' });
 
     var prePopulate = new sl.Class('/data/inventory.json', 'epic_sword', {
         target: '#slot-pop'
