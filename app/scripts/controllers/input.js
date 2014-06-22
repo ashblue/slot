@@ -114,21 +114,14 @@ $(document).ready(function () {
 
             if (filterType === 'object') {
                 filter.input.$view.find('.slot-input').change(function () {
-                    self.clear();
+                    if ($(this).val() === '') self.clear();
                 });
 
             } else if (filterType === 'jquery') {
                 sl.filter.$getInput(filter).change(function () {
-                    self.clear();
+                    if ($(this).val() === '') self.clear();
                 });
             }
-        }
-    };
-
-    Input.prototype.clear = function () {
-        // Completely wipe the input (including image)
-        if (this.type === 'slot') {
-            this.$view.find('.slot-input').val('');
         }
     };
 
@@ -171,6 +164,7 @@ $(document).ready(function () {
     };
 
     Input.prototype.triggerChange = function () {
+        if (this.type !== 'slot') return;
         var evt = document.createEvent("HTMLEvents");
         evt.initEvent("change", false, true);
         this.$view.find('input').get(0).dispatchEvent(evt);
@@ -213,12 +207,16 @@ $(document).ready(function () {
 
     // Clear everything back to the original state
     Input.prototype.clear = function () {
-        this.clearState();
-        this.$view.find('.slot-image').hide();
-        this.$view.find('.slot-image-placeholder').show();
-        this.$view.find('.slot-text').html('');
-        this.$view.find('.slot-input').val('');
-        this.triggerChange();
+        if (this.type === 'slot') {
+            this.clearState();
+            this.$view.find('.slot-image').hide();
+            this.$view.find('.slot-image-placeholder').show();
+            this.$view.find('.slot-text').html('');
+            this.$view.find('.slot-input').val('');
+            this.triggerChange();
+        } else if (this.type === 'strip') {
+            this.$view.find('.slot-item').detach();
+        }
     };
 
     // Wipe all available states

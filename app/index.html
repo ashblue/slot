@@ -190,6 +190,23 @@ filterKey: 'url'
                     <div id="slot-filter-demo-parent"></div>
                     <h5>Results</h5>
                     <div id="slot-filter-demo"></div>
+
+                    <h4>Filter by slot for a strip</h4>
+                    <p>Note that you can <em>only filter a strip with a slot</em>. You cannot filter a slot with a strip.</p>
+                    <input
+                            id="slot-filter-strip"
+                            type="text"
+                            required="true"
+                            class="slot-input"
+                            value="epic_no_image"
+                            data-url="/data/inventory.json" />
+
+                    <input
+                            type="text"
+                            class="slot-strip"
+                            value='["divine"]'
+                            data-url="/data/upgrades.json"
+                            data-options='{ "filter": "#slot-filter-strip", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />
                 </div>
 
                 <div>

@@ -26,10 +26,12 @@ $(document).ready(function () {
         var $target = $('<div></div>');
         var url = $input.data('url');
         var value = JSON.parse($input.val());
+        var name = $input.attr('name');
 
         var options = $.extend($input.data('options'), {
             target: $target.get(0),
-            type: 'strip'
+            type: 'strip',
+            name: name
         });
 
         $target.insertAfter($input);
