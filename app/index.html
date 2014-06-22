@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/favicon.ico">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
+        <!-- build:css(.tmp) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbower -->
@@ -44,27 +44,27 @@
             <div>
                 <h2>Slot usage</h2>
 <pre>
-new sl.Class('/data/hash_of_ids.json');
+new sl.Class('./data/hash_of_ids.json');
 </pre>
                 <div id="slot"></div>
 
                 <p>Set an option tag to trigger a slot (turns data input into an array)</p>
 <pre>
-new sl.Class('/data/inventory.json', null, { type: 'strip });
+new sl.Class('./data/inventory.json', null, { type: 'strip });
 </pre>
                 <div id="strip"></div>
 
                 <div>
                     <h3>Pre-Populated</h3>
 <pre>
-new sl.Class('/data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (data repository, current ID, targetID)
+new sl.Class('./data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (data repository, current ID, targetID)
 </pre>
                     <div id="slot-pop"></div>
                     <div id="slot-pop-no-image"></div>
 
                     <h4>Strip</h4>
 <pre>
-new sl.Class('/data/inventory.json', ['id', 'id', 'id'], { target: '#myTarget', type: 'strip' });
+new sl.Class('./data/inventory.json', ['id', 'id', 'id'], { target: '#myTarget', type: 'strip' });
 </pre>
                     <div id="slot-pop-strip"></div>
                 </div>
@@ -85,14 +85,14 @@ imageSrcKey: 'src',
                     <h3>Missing data handling</h3>
                     <p>Kicks in whenever an ID is missing from your data</p>
 <pre>
-new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget', required: true });
+new sl.Class('./data/inventory.json', 'missing_id', { target: '#myTarget', required: true });
 </pre>
                     <input
                             type="text"
                             value="asdf"
                             required="true"
                             class="slot-input"
-                            data-url="/data/upgrades.json" />
+                            data-url="./data/upgrades.json" />
 
                 </div>
 
@@ -100,7 +100,7 @@ new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget', requir
                     <h3>Set input data</h3>
                     <p>Supports the following HTML attributes. Will also trigger a red outline when HTML5 invalid fires.</p>
 <pre>
-new sl.Class('/data/inventory.json', 'epic_sword', {
+new sl.Class('./data/inventory.json', 'epic_sword', {
     name: 'slot-input',
     required: true // Slots only, no strips
 });
@@ -119,7 +119,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
        required="true"
        class="slot-input"
        value="epic_sword"
-       data-url="/data/inventory.json"
+       data-url="./data/inventory.json"
        data-options='{ "size": "normal" }' /&gt;
 </pre>
                     <input
@@ -128,7 +128,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
                             required="true"
                             class="slot-input"
                             value="epic_sword"
-                            data-url="/data/inventory.json"
+                            data-url="./data/inventory.json"
                             data-options='{ "size": "normal" }' />
 
                     <h5>Strip support</h5>
@@ -138,7 +138,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
        name="myInput"
        class="slot-strip"
        value='["epic_sword", "epic_sword_vertical"]'
-       data-url="/data/inventory.json"
+       data-url="./data/inventory.json"
        data-options='{ "name": "strip" }' /&gt;
 </pre>
                         <input
@@ -146,7 +146,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
                                 name="myInput"
                                 class="slot-strip"
                                 value='["epic_sword", "epic_sword_vertical"]'
-                                data-url="/data/inventory.json"
+                                data-url="./data/inventory.json"
                                 data-options='{ "name": "strip" }' />
                 </div>
 
@@ -159,7 +159,7 @@ new sl.Class('/data/inventory.json', 'epic_sword', {
 <pre>
 // @NOTE Provided settings.filter object may only be a slots, no strips (although) strips can be filtered
 filter: '#target_input' || 'data_id' || inputElement, // Note only support jQuery IDs
-filterUrl: '/data/inventory.json',
+filterUrl: './data/inventory.json',
 filterKey: 'url'
 </pre>
                     <h4>Filter by data ID only</h4>
@@ -167,8 +167,8 @@ filterKey: 'url'
                             type="text"
                             required="true"
                             class="slot-input"
-                            data-url="/data/upgrades.json"
-                            data-options='{ "filter": "epic_no_image", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />
+                            data-url="./data/upgrades.json"
+                            data-options='{ "filter": "epic_no_image", "filterUrl": "./data/inventory.json", "filterKey": "upgrades" }' />
 
                     <h4>Filter by pre-existing input ID</h4>
                     <h5>Filter</h5>
@@ -178,15 +178,15 @@ filterKey: 'url'
                             required="true"
                             class="slot-input"
                             value="epic_no_image"
-                            data-url="/data/inventory.json" />
+                            data-url="./data/inventory.json" />
 
                     <h5>Results</h5>
                     <input
                             type="text"
                             required="true"
                             class="slot-input"
-                            data-url="/data/upgrades.json"
-                            data-options='{ "filter": "#slot-filter", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />
+                            data-url="./data/upgrades.json"
+                            data-options='{ "filter": "#slot-filter", "filterUrl": "./data/inventory.json", "filterKey": "upgrades" }' />
 
 
                     <h4>Filter by Slot class</h4>
@@ -203,44 +203,44 @@ filterKey: 'url'
                             required="true"
                             class="slot-input"
                             value="epic_no_image"
-                            data-url="/data/inventory.json" />
+                            data-url="./data/inventory.json" />
 
                     <input
                             type="text"
                             class="slot-strip"
                             value='["divine"]'
-                            data-url="/data/upgrades.json"
-                            data-options='{ "filter": "#slot-filter-strip", "filterUrl": "/data/inventory.json", "filterKey": "upgrades" }' />
+                            data-url="./data/upgrades.json"
+                            data-options='{ "filter": "#slot-filter-strip", "filterUrl": "./data/inventory.json", "filterKey": "upgrades" }' />
                 </div>
 
                 <div>
                     <h3>Compact version</h3>
 <pre>
-new sl.Class('/data/inventory.json', 'my_id_val', { size: 'compact' });
+new sl.Class('./data/inventory.json', 'my_id_val', { size: 'compact' });
 </pre>
                     <input
                             type="text"
                             required="true"
                             class="slot-input"
-                            data-url="/data/upgrades.json"
+                            data-url="./data/upgrades.json"
                             data-options='{ "size": "compact" }' />
 
                     <input
                             type="text"
                             class="slot-strip"
                             value='[]'
-                            data-url="/data/upgrades.json"
+                            data-url="./data/upgrades.json"
                             data-options='{ "size": "compact" }' />
 
                     <h5>Vertical layout (strips only)</h5>
 <pre>
-new sl.Class('/data/inventory.json', 'my_id_val', { size: 'vertical' });
+new sl.Class('./data/inventory.json', 'my_id_val', { size: 'vertical' });
 </pre>
                     <input
                             type="text"
                             class="slot-strip"
                             value='["epic_sword", "epic_sword_vertical"]'
-                            data-url="/data/inventory.json"
+                            data-url="./data/inventory.json"
                             data-options='{ "size": "vertical" }' />
                 </div>
             </div>
