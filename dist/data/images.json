@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "epicSword",
+        "src": "http://lorempixel.com/400/200/"
+    },
+
+    {
+        "_id": "epicSwordVertical",
+        "src": "http://lorempixel.com/200/400/"
+    },
+
+    {
+        "_id": "epicShield",
+        "src": "//placehold.it/10"
+    }
+]

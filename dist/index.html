@@ -1,0 +1,49 @@
+<!DOCTYPE html><html class=no-js><head><meta charset=utf-8><title>slot</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/6df2b309.favicon.ico><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/9aae7a50.vendor.css><link rel=stylesheet href=styles/fb1793fc.main.css><script src=scripts/vendor/c9ea6662.modernizr.js></script><body><!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]--><div class=container><h1>Slot</h1><p>An API for displaying better data inputs on the fly</p><h4>Requirements</h4><ul><li>jQuery</li><li>Twitter Bootstrap</li><li>Handlebars</li></ul><div class="alert alert-info"><p>Note that images on the following examples will change between the modal and input slot. As they are dynamically loaded from an external server.</p></div><div><h2>Slot usage</h2><pre>
+new sl.Class('./data/hash_of_ids.json');
+</pre><div id=slot></div><p>Set an option tag to trigger a slot (turns data input into an array)</p><pre>
+new sl.Class('./data/inventory.json', null, { type: 'strip });
+</pre><div id=strip></div><div><h3>Pre-Populated</h3><pre>
+new sl.Class('./data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (data repository, current ID, targetID)
+</pre><div id=slot-pop></div><div id=slot-pop-no-image></div><h4>Strip</h4><pre>
+new sl.Class('./data/inventory.json', ['id', 'id', 'id'], { target: '#myTarget', type: 'strip' });
+</pre><div id=slot-pop-strip></div></div><div><h3>Set Image Retrieval Repository</h3><p>All images are pulled from a library of ID references at the moment. You can change some of the parameters with the following options or changing <code>app/scripts/models/settings.js</code> and then running <code>grunt build</code> on a terminal.</p><pre>
+imageUrl: 'data/images.json',
+imageKey: 'image',
+imageSrcKey: 'src',
+</pre></div><div><h3>Missing data handling</h3><p>Kicks in whenever an ID is missing from your data</p><pre>
+new sl.Class('./data/inventory.json', 'missing_id', { target: '#myTarget', required: true });
+</pre><input value=asdf required class=slot-input data-url=./data/upgrades.json></div><div><h3>Set input data</h3><p>Supports the following HTML attributes. Will also trigger a red outline when HTML5 invalid fires.</p><pre>
+new sl.Class('./data/inventory.json', 'epic_sword', {
+    name: 'slot-input',
+    required: true // Slots only, no strips
+});
+</pre><div id=slot-input></div></div><div><h3>Create with pure HTML/CSS</h3><p>Wraps the any input with <code>class="slot-input"</code> in a div. Optional <code>data-options</code> param is parsed as options</p><pre>
+&lt;input class="slot-input"
+       type="text"
+       name="myInput"
+       required="true"
+       class="slot-input"
+       value="epic_sword"
+       data-url="./data/inventory.json"
+       data-options='{ "size": "normal" }' /&gt;
+</pre><input name=myInput required class=slot-input value=epic_sword data-url=./data/inventory.json data-options="{ &quot;size&quot;: &quot;normal&quot; }"><h5>Strip support</h5><pre>
+&lt;input class="slot-input"
+       type="text"
+       name="myInput"
+       class="slot-strip"
+       value='["epic_sword", "epic_sword_vertical"]'
+       data-url="./data/inventory.json"
+       data-options='{ "name": "strip" }' /&gt;
+</pre><input name=myInput class=slot-strip value="[&quot;epic_sword&quot;, &quot;epic_sword_vertical&quot;]" data-url=./data/inventory.json data-options="{ &quot;name&quot;: &quot;strip&quot; }"></div><div><h3>Filter by previous input</h3><p>You can filter the given results for a particular input by providing the following options. The passed filter ID or input retrieves an array of values from the key. All results in the modal are then limited by the array of IDs.</p><pre>
+// @NOTE Provided settings.filter object may only be a slots, no strips (although) strips can be filtered
+filter: '#target_input' || 'data_id' || inputElement, // Note only support jQuery IDs
+filterUrl: './data/inventory.json',
+filterKey: 'url'
+</pre><h4>Filter by data ID only</h4><input required class=slot-input data-url=./data/upgrades.json data-options="{ &quot;filter&quot;: &quot;epic_no_image&quot;, &quot;filterUrl&quot;: &quot;./data/inventory.json&quot;, &quot;filterKey&quot;: &quot;upgrades&quot; }"><h4>Filter by pre-existing input ID</h4><h5>Filter</h5><input id=slot-filter required class=slot-input value=epic_no_image data-url=./data/inventory.json><h5>Results</h5><input required class=slot-input data-url=./data/upgrades.json data-options="{ &quot;filter&quot;: &quot;#slot-filter&quot;, &quot;filterUrl&quot;: &quot;./data/inventory.json&quot;, &quot;filterKey&quot;: &quot;upgrades&quot; }"><h4>Filter by Slot class</h4><h5>Filter</h5><div id=slot-filter-demo-parent></div><h5>Results</h5><div id=slot-filter-demo></div><h4>Filter by slot for a strip</h4><p>Note that you can <em>only filter a strip with a slot</em>. You cannot filter a slot with a strip.</p><input id=slot-filter-strip required class=slot-input value=epic_no_image data-url=./data/inventory.json><input class=slot-strip value=[&quot;divine&quot;] data-url=./data/upgrades.json data-options="{ &quot;filter&quot;: &quot;#slot-filter-strip&quot;, &quot;filterUrl&quot;: &quot;./data/inventory.json&quot;, &quot;filterKey&quot;: &quot;upgrades&quot; }"></div><div><h3>Compact version</h3><pre>
+new sl.Class('./data/inventory.json', 'my_id_val', { size: 'compact' });
+</pre><input required class=slot-input data-url=./data/upgrades.json data-options="{ &quot;size&quot;: &quot;compact&quot; }"><input class=slot-strip value=[] data-url=./data/upgrades.json data-options="{ &quot;size&quot;: &quot;compact&quot; }"><h5>Vertical layout (strips only)</h5><pre>
+new sl.Class('./data/inventory.json', 'my_id_val', { size: 'vertical' });
+</pre><input class=slot-strip value="[&quot;epic_sword&quot;, &quot;epic_sword_vertical&quot;]" data-url=./data/inventory.json data-options="{ &quot;size&quot;: &quot;vertical&quot; }"></div></div></div><a href=http://ashblue.github.io/slot><img style="position: absolute; top: 0; right: 0; border: 0" src=https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67 alt="Fork me on GitHub" data-canonical-src=https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png></a><script src=scripts/465c9145.vendor.js></script><script src=scripts/6b5da0e8.plugins.js></script><script src=scripts/af3d43e4.main.js></script><script src=scripts/1885dcca.demo.js></script>
