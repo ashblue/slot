@@ -160,6 +160,7 @@ $(document).ready(function () {
             val.forEach(function (id) {
                 self.add(id);
             });
+            this.setState('ready');
         }
     };
 
