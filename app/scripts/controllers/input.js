@@ -139,6 +139,8 @@ $(document).ready(function () {
     };
 
     Input.prototype.set = function (val) {
+        var self = this;
+
         if (this.type === 'slot') {
             var data = sl.dataCollection.get(this.url).get(val);
             if (!data) {
@@ -156,10 +158,12 @@ $(document).ready(function () {
                 this.$view.find('.slot-image-placeholder').hide();
             }
             this.setState('ready');
+        } else if (this.type === 'strip') {
+            if (!Array.isArray(val)) return;
+            val.forEach(function (id) {
+                self.add(id);
+            });
         }
-
-        // Set the current value on the text input
-        // Or generate the necessary image inputs
     };
 
     Input.prototype.triggerChange = function () {

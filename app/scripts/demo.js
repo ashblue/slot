@@ -12,6 +12,11 @@ $(document).ready(function () {
     var prePopulateVertical = new sl.Class('/data/inventory.json', 'epic_sword_vertical', {
         target: '#slot-pop-vert-overflow'
     });
+    var prePopStrip = new sl.Class('/data/inventory.json', ['epic_sword', 'epic_no_image', 'epic_sword_vertical'], {
+        target: '#slot-pop-strip',
+        type: 'strip',
+        name: 'myStrip'
+    });
 
     var slotInput = new sl.Class('/data/inventory.json', 'epic_sword', {
         target: '#slot-input',

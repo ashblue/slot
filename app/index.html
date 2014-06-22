@@ -55,14 +55,14 @@ new sl.Class('/data/inventory.json', null, { type: 'strip });
 <pre>
 new sl.Class('/data/inventory.json', 'my_id_val', { target: '#myTarget' }); // (data repository, current ID, targetID)
 </pre>
-                    <h5>Horizontal Overflow</h5>
                     <div id="slot-pop"></div>
-
-                    <h5>Vertical Overflow</h5>
-                    <div id="slot-pop-vert-overflow"></div>
-
-                    <h5>Without an image</h5>
                     <div id="slot-pop-no-image"></div>
+
+                    <h4>Strip</h4>
+<pre>
+new sl.Class('/data/inventory.json', ['id', 'id', 'id'], { target: '#myTarget', type: 'strip' });
+</pre>
+                    <div id="slot-pop-strip"></div>
                 </div>
 
                 <div>
@@ -81,7 +81,7 @@ imageSrcKey: 'src',
                     <h3>Missing data handling</h3>
                     <p>Kicks in whenever an ID is missing from your data</p>
 <pre>
-new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget' });
+new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget', required: true });
 </pre>
                     <input
                             type="text"
@@ -98,7 +98,7 @@ new sl.Class('/data/inventory.json', 'missing_id', { target: '#myTarget' });
 <pre>
 new sl.Class('/data/inventory.json', 'epic_sword', {
     name: 'slot-input',
-    required: true
+    required: true // Slots only, no strips
 });
 </pre>
                     <div id="slot-input"></div>
